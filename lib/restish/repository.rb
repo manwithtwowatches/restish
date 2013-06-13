@@ -41,7 +41,15 @@ module Restish
     #
     # @param [String,Integer] id Model ID
     # @return [Model]
-    def find(id, options = {})
+    def find(id_or_options)
+      if id_or_options.is_a?(Hash)
+        options = id_or_options
+        id = nil
+      else
+        options = {}
+        id = id_or_options
+      end
+
       if model = find_locally(id)
         model
       else

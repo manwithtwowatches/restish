@@ -82,7 +82,7 @@ describe Restish::Repository do
       it 'fetches the model from adapter' do
         TestRepository.should_receive(:adapter).with('test')
           .and_return test_adapter
-        test_adapter.should_receive(:find).with 123
+        test_adapter.should_receive(:find).with 123, {}
         TestRepository.find(123).should eq model
       end
     end
